@@ -40,7 +40,7 @@ class HomeTwoPage extends StatelessWidget {
                                 .add(GoToHomeInitialEvent());
                           },
                         ),
-                        SizedBox(width: 20), // Adjust spacing as needed
+                        const SizedBox(width: 20), // Adjust spacing as needed
                         Image.asset(
                           'assets/Logo.png',
                           width: 250, // Adjust the width as needed
@@ -71,10 +71,11 @@ class HomeTwoPage extends StatelessWidget {
                           ),
                           style: ElevatedButton.styleFrom(
                             elevation: 10, // Add elevation
-                            minimumSize: Size(200, 50), // Set width and height
+                            minimumSize:
+                                const Size(200, 50), // Set width and height
                           ),
                         ),
-                        SizedBox(height: 20), // Add a constant gap
+                        const SizedBox(height: 20), // Add a constant gap
                         ElevatedButton.icon(
                           onPressed: () {
                             _launchUrl('https://instagram.com/bame.engineers');
@@ -92,10 +93,11 @@ class HomeTwoPage extends StatelessWidget {
                           ),
                           style: ElevatedButton.styleFrom(
                             elevation: 10, // Add elevation
-                            minimumSize: Size(200, 50), // Set width and height
+                            minimumSize:
+                                const Size(200, 50), // Set width and height
                           ),
                         ),
-                        SizedBox(height: 20), // Add a constant gap
+                        const SizedBox(height: 20), // Add a constant gap
                         ElevatedButton.icon(
                           onPressed: () {
                             _launchUrl('https://www.tiktok.com/@bameesoc');
@@ -113,10 +115,11 @@ class HomeTwoPage extends StatelessWidget {
                           ),
                           style: ElevatedButton.styleFrom(
                             elevation: 10, // Add elevation
-                            minimumSize: Size(200, 50), // Set width and height
+                            minimumSize:
+                                const Size(200, 50), // Set width and height
                           ),
                         ),
-                        SizedBox(height: 20), // Add a constant gap
+                        const SizedBox(height: 20), // Add a constant gap
                         ElevatedButton.icon(
                           onPressed: () {
                             _launchEmail('bameengsoc@sheffield.ac.uk');
@@ -134,10 +137,11 @@ class HomeTwoPage extends StatelessWidget {
                           ),
                           style: ElevatedButton.styleFrom(
                             elevation: 10, // Add elevation
-                            minimumSize: Size(200, 50), // Set width and height
+                            minimumSize:
+                                const Size(200, 50), // Set width and height
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         ElevatedButton.icon(
                           onPressed: () {
                             _launchUrl(
@@ -156,7 +160,8 @@ class HomeTwoPage extends StatelessWidget {
                           ),
                           style: ElevatedButton.styleFrom(
                             elevation: 10, // Add elevation
-                            minimumSize: Size(200, 50), // Set width and height
+                            minimumSize:
+                                const Size(200, 50), // Set width and height
                           ),
                         ), // Add a constant gap
                       ],

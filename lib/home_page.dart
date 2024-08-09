@@ -24,6 +24,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomeBloc(),
@@ -44,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                     child: Align(
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: AnimatedTextKit(
                           animatedTexts: [
                             TyperAnimatedText(
@@ -76,12 +77,12 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () {
                           context.read<HomeBloc>().add(GoToHomeTwoEvent());
                         },
+                        backgroundColor: Colors.brown.shade700,
                         child: Icon(
                           Icons.handshake_rounded,
                           color: Colors.brown.shade100,
                           size: 40,
                         ),
-                        backgroundColor: Colors.brown.shade700,
                       ),
                     ),
                   ),
@@ -103,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Expanded(
                     child: PageTransitionSwitcher(
-                      duration: Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 500),
                       reverse: state is HomeTwo || state is HomeThree,
                       transitionBuilder:
                           (child, animation, secondaryAnimation) {

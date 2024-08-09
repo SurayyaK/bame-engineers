@@ -4,7 +4,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:xen_popup_card/xen_card.dart';
 
 class SettingsPage extends StatelessWidget {
-  // Define XenCardGutter here
+  Widget buildBackButton(BuildContext context) {
+    return Positioned(
+      top: 50, // Place the button at the top of the screen
+      left: 20, // Place the button at the left of the screen
+      child: IconButton(
+        icon: Icon(
+          Icons.arrow_back_ios_rounded,
+          size: 30, // iOS-style back button icon
+          color: Colors.brown.shade700, // Brown color for the icon
+        ),
+        onPressed: () {
+          Navigator.pop(context); // Close the page
+        },
+      ),
+    );
+  }
+
   XenCardGutter getGutter(BuildContext context) {
     return XenCardGutter(
       child: Padding(
@@ -102,12 +118,12 @@ class SettingsPage extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
+          buildBackButton(context), // Add the back button to the Stack
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(height: 60),
-
                 // Voiceover button
                 buildButton(
                   text: 'Voiceover',

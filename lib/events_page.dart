@@ -1,3 +1,6 @@
+// 4 is empowerment event and
+// 12 is girls netball team
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fan_carousel_image_slider/fan_carousel_image_slider.dart';
@@ -101,17 +104,21 @@ class EventsPage extends StatelessWidget {
   // Use the asset paths for images
   List<String> images = [
     'assets/1.jpg',
-    'assets/2.JPG',
-    'assets/3.jpg',
-    'assets/4.jpg',
-    'assets/5.jpg',
-    'assets/6.jpg',
-    'assets/7.jpg',
+    'assets/2.jpg',
+    'assets/3.JPG',
+    //'assets/4.jpg',
+    'assets/5.jpeg',
+    'assets/6.jpeg',
+    'assets/7.jpeg',
     'assets/8.jpg',
-    'assets/9.jpg',
+    'assets/9.jpeg',
     'assets/10.jpg',
-    'assets/11.JPG',
-    'assets/14.jpg',
+    'assets/11.jpg',
+    //'assets/12.jpg',
+    'assets/13.jpg',
+    'assets/14.jpeg',
+    'assets/15.jpg',
+    'assets/16.jpg',
   ];
 }
 

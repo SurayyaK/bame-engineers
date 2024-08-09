@@ -61,6 +61,11 @@ dependencies:
   pluto_menu_bar: ^3.0.1
   flutter_zoom_drawer: ^3.1.1
   rive: ^0.11.4
+  expansion_tile_card: ^3.0.0
+  webview_flutter: ^4.4.2
+  draggable_bottom_sheet: ^1.0.2
+  flutter_inappwebview: ^5.8.0
+  animated_emoji: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -83,22 +88,37 @@ flutter:
     - assets/Logo.png
     - assets/Logo_transparent.png
     - assets/members.txt
-    - assets/1.jpg
-    - assets/2.JPG
-    - assets/3.jpg
-    - assets/4.jpg
-    - assets/5.jpg
-    - assets/6.jpg
-    - assets/7.jpg
-    - assets/8.jpg
-    - assets/9.jpg
-    - assets/10.jpg
-    - assets/11.JPG
-    - assets/14.jpg
+    - 'assets/1.jpg'
+    - 'assets/2.jpg'
+    - 'assets/3.JPG'
+    # - 'assets/4.jpg'
+    - 'assets/5.jpeg'
+    - 'assets/6.jpeg'
+    - 'assets/7.jpeg'
+    - 'assets/8.jpg'
+    - 'assets/9.jpeg'
+    - 'assets/10.jpg'
+    - 'assets/11.jpg'
+    # - 'assets/12.jpg'
+    - 'assets/13.jpg'
+    - 'assets/14.jpeg'
+    - 'assets/15.jpg'
+    - 'assets/16.jpg'
     - assets/basic_spin_gears.riv
     - assets/surayya.PNG
     - assets/meme1.jpg
     - assets/handshake.riv
+    - assets/shay.jpeg
+    - assets/naimur.jpeg
+    - assets/sulaiman.jpeg
+    - assets/kitan.jpeg
+    - assets/nabhan.jpeg
+    - assets/vritika.jpeg
+    - assets/ben.jpeg
+    - assets/parisha.jpeg
+    - assets/elizabeth.jpeg
+    - assets/Rahaf.jpeg
+    - assets/eivile.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

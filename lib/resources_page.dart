@@ -5,7 +5,7 @@ import 'Membership/membership_card_page.dart';
 class ResourcesPage extends StatelessWidget {
   final String currentRoute;
   final PageController pageController;
-
+ 
   const ResourcesPage({
     super.key,
     required this.currentRoute,

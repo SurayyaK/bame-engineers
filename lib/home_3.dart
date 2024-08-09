@@ -3,748 +3,188 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'bloc/home_bloc.dart';
 
+class CardData {
+  String name;
+  String role;
+  String bio;
+  String imagePath;
+  Color backgroundColor;
+  Color textColor;
+  String url;
+
+  CardData({
+    required this.name,
+    required this.role,
+    required this.bio,
+    required this.imagePath,
+    required this.backgroundColor,
+    required this.textColor,
+    required this.url,
+  });
+}
+
 class HomeThreePage extends StatelessWidget {
-  final List<Container> cards = [
-    Container(
-      color: Colors.brown.shade100,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Naimur ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade700,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  President',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade700,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '  I study Architectural Engineering\n  If I had a superpower it would be \n  invisibility so I could fall asleep and \n  no one would know!',
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade700,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+  final List<CardData> cardDataList = [
+    CardData(
+      name: 'Naimur',
+      role: 'President',
+      bio:
+          'My goal is to create an inclusive community where people can come together to socialise and make friends whilst developing themselves into the engineers of the future!',
+      imagePath: 'assets/naimur.jpeg',
+      backgroundColor: Colors.brown.shade100,
+      textColor: Colors.brown.shade700,
+      url: 'https://www.linkedin.com/in/naimur-rahman-0104b4238/',
     ),
-    Container(
-      color: Colors.brown.shade200,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Liz ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade800,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Vice President',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade800,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '  I study Architectural Engineering \n  If I had a superpower it would be \n  time mainpulation!',
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade800,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Lizzie',
+      role: 'Vice President',
+      bio:
+          'My goal is to create an environment where everyone feels heard, valued and inspired to pursue their engineering ambitions! 😁 ',
+      imagePath: 'assets/elizabeth.jpeg',
+      backgroundColor: Colors.brown.shade200,
+      textColor: Colors.brown.shade800,
+      url: 'https://www.linkedin.com/in/elizabeth-adeni/',
     ),
-    Container(
-      color: Colors.brown.shade300,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Sully ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade900,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Secretary',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade900,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "  I study Mechanical Engineering \n  If I could have a superpower I'd want \n  telekinesis. I'm all about an easy life!",
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade900,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Sully',
+      role: 'Secretary',
+      bio:
+          'My goal is to create a community of likeminded individuals all able to assist each other to become the best versions of themselves!',
+      imagePath: 'assets/sulaiman.jpeg',
+      backgroundColor: Colors.brown.shade300,
+      textColor: Colors.brown.shade900,
+      url: 'https://www.linkedin.com/in/sulaiman-hafezi-3221981a5/',
     ),
-    Container(
-      color: Colors.brown.shade400,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Benjamin ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade900,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Treasurer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade900,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '  I study Civil and Structural \n  Engineering \n  If I had a superpower it would be \n  super speed!',
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade900,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Benjamin',
+      role: 'Treasurer',
+      bio:
+          'My goal is to make the university a comfortable environment for Engineers of ethnic backgrounds. Making sure no one feels lonely during their academic journey.',
+      imagePath: 'assets/ben.jpeg',
+      backgroundColor: Colors.brown.shade400,
+      textColor: Colors.brown.shade900,
+      url: 'https://www.linkedin.com/in/benjaminmbale/',
     ),
-    Container(
-      color: Colors.brown,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Nabhan ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Alumni Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade100,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "  If I had a superpower it would be a \n  cliche one, I'd have the ability to fly. \n  I've been obsessed with flying ever \n  since I was a little kid",
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Surayya',
+      role: 'Education Officer',
+      bio:
+          'My goal is to inspire and support as many people as possible, becoming the role model I wish I had!! \\(^o^)/',
+      imagePath: 'assets/shay.jpeg',
+      backgroundColor: Colors.brown,
+      textColor: Colors.pink.shade50,
+      url: 'https://www.linkedin.com/in/surayya-kausar/',
     ),
-    Container(
-      color: Colors.brown.shade600,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Awaab ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Charity Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade100,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "  I study Civil Engineering \n  If I had a superpower it would be the \n  ability to slap people through \n  facetime",
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Kitan',
+      role: 'Events Officer',
+      bio:
+          'My goal is to create opportunities for minority ethnic engineers to socialise and network. I hope we inspire each other to achieve great things in our fields.',
+      imagePath: 'assets/kitan.jpeg',
+      backgroundColor: Colors.brown.shade600,
+      textColor: Colors.brown.shade50,
+      url: 'https://www.linkedin.com/in/anuoluwakitan-oni-42143b1b1/',
     ),
-    Container(
-      color: Colors.brown.shade700,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Kitan ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Events Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade100,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "  I study Architectural Engineering \n  If I had a superpower it would be the \n  power to control time because it \n  would literally make me unbeatable! \n ",
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Eivile',
+      role: 'Publicity Officer',
+      bio:
+          'My goal is to change the perception of engineering by bringing more BAME faces to light, aiding the creation of an uplifting culture of diversity <3',
+      imagePath: 'assets/eivile.jpeg',
+      backgroundColor: Colors.brown.shade700,
+      textColor: Colors.brown.shade100,
+      url: 'https://www.linkedin.com/in/eivile-rimkute-1b2934252/',
     ),
-    Container(
-      color: Colors.brown.shade800,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Rahaf ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Events Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade100,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "  I study Architectural Engineering \n  If I had a superpower it would be \n  teleportation! ",
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+        name: 'Rahaf',
+        role: 'Events Officer',
+        bio:
+            'My goal is to create a friendly, safe and welcoming environment for BAME students, and to encourage them to achieve their best in all life aspects!',
+        imagePath: 'assets/Rahaf.jpeg',
+        backgroundColor: Colors.brown.shade800,
+        textColor: Colors.brown.shade100,
+        url: ''),
+    CardData(
+      name: 'Vritika',
+      role: 'Media Officer',
+      bio:
+          'My goal is to help BAME students feel confident in pursuing an engineering degree whilst being part of a community of like minded individuals who are here to support them!',
+      imagePath: 'assets/vritika.jpeg',
+      backgroundColor: Colors.brown.shade900,
+      textColor: Colors.brown.shade100,
+      url: 'https://www.linkedin.com/in/vritika-varsani/',
     ),
-    Container(
-      color: Colors.brown.shade900,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Eiville ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Publicity Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade100,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "  I study Architectural Engineering \n  If I had a superpower it would be \n  teleportation to save myself time and \n  money ",
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'David',
+      role: 'Sports Officer',
+      bio: '  My goal is to...',
+      imagePath: 'assets/surayya.PNG',
+      backgroundColor: Colors.brown.shade800,
+      textColor: Colors.brown.shade100,
+      url: 'https://www.linkedin.com/in/david-ezra-offei-manu-b28901274/',
     ),
-    Container(
-      color: Colors.brown.shade800,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Vritika ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 6,
-          ),
-          Text(
-            '  Media Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade100,
-            ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            "  I study Civil and Structural\n  Engineering. If I had a superpower it \n  would definitely be the ability to \n  teleport so I can travel anywhere and \n  most importantly never be late!",
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Nabhan',
+      role: 'Alumni Officer',
+      bio:
+          'My goal is to help current students prepare for life after university and create new memories for graduates',
+      imagePath: 'assets/nabhan.jpeg',
+      backgroundColor: Colors.brown.shade700,
+      textColor: Colors.brown.shade100,
+      url: 'https://www.linkedin.com/in/nabhan-ahmed-518219222/',
     ),
-    Container(
-      color: Colors.brown.shade700,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Surayya ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.pink.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Educations Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.pink.shade100,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '  I study Mechatronic and Robotic \n  Engineering.\n  If I had a superpower it would be \n  mind control!',
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.pink.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Nour',
+      role: 'Outreach Officer',
+      bio: '  My goal is to...',
+      imagePath: 'assets/surayya.PNG',
+      backgroundColor: Colors.brown.shade600,
+      textColor: Colors.brown.shade100,
+      url: 'https://www.linkedin.com/in/nour-zahran-859754274/',
     ),
-    Container(
-      color: Colors.brown.shade600,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          SizedBox(height: 2),
-          Text(
-            '  Nour ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Outreach Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade100,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '  I study Architectural Engineering.\n  If I had a superpower it would be \n  teleportation because I love  to travel!',
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Parisha',
+      role: 'Industry Representative',
+      bio:
+          'I aim to be as accessible and share as much of my experience as possible with our community; to be that role model and continue proving that we can and we will!',
+      imagePath: 'assets/parisha.jpeg',
+      backgroundColor: Colors.brown,
+      textColor: Colors.brown.shade50,
+      url: 'https://www.linkedin.com/in/parisha-mistry-b512b4168/',
     ),
-    Container(
-      color: Colors.brown,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Hashim ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Industry Representative',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade100,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '  I study Chemical Engineering!',
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade100,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Hashim',
+      role: 'Industry Representative',
+      bio: '  My goal is to...',
+      imagePath: 'assets/surayya.PNG',
+      backgroundColor: Colors.brown.shade400,
+      textColor: Colors.brown.shade900,
+      url: 'https://www.linkedin.com/in/hashim-khan-24710b229/11',
     ),
-    Container(
-      color: Colors.brown.shade400,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Parisha ',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade900,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 6,
-          ),
-          Text(
-            '  Industry Representative',
-            style: GoogleFonts.roboto(
-              fontSize: 20,
-              color: Colors.brown.shade900,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            "  I study Aerospace Engineering.\n  I'm currently on placement at BAE \n  Systems. If I had a superpower it would \n  be telekinesis... to keep things moving \n  whilst working (and channel my inner \n  Matilda Wormwood!)",
-            style: GoogleFonts.roboto(
-              fontSize: 17,
-              color: Colors.brown.shade900,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Awaab',
+      role: 'Charity Officer',
+      bio: '  My goal is to...',
+      imagePath: 'assets/surayya.PNG',
+      backgroundColor: Colors.brown.shade300,
+      textColor: Colors.brown.shade900,
+      url: '',
     ),
-    Container(
-      color: Colors.brown.shade300,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  David ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade800,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Sports Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade800,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '  I study Civil and Structural? \n  Engineering.\n  If I had a superpower it would be \n  super strength a bit like hulk, where I \n  could pick up buildings',
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade800,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
-    ),
-    Container(
-      color: Colors.brown.shade200,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 3,
-          ),
-          SizedBox(
-            child: Image.asset(
-              'assets/surayya.PNG',
-              fit: BoxFit.contain,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            '  Ajmal ',
-            style: GoogleFonts.roboto(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.brown.shade800,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            '  Sponsorship Officer',
-            style: GoogleFonts.roboto(
-              fontSize: 22,
-              color: Colors.brown.shade800,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '  dk what he studies or superpower \n  (shrug)',
-            style: GoogleFonts.roboto(
-              fontSize: 18,
-              color: Colors.brown.shade800,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
+    CardData(
+      name: 'Ajmal',
+      role: 'Sponsorship Officer',
+      bio: '  My goal is to...',
+      imagePath: 'assets/surayya.PNG',
+      backgroundColor: Colors.brown.shade200,
+      textColor: Colors.brown.shade800,
+      url: 'https://www.linkedin.com/in/mohamed-ajmal-b32583176/',
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -759,25 +199,14 @@ class HomeThreePage extends StatelessWidget {
               }
             },
             child: Container(
-              color: Colors.grey.shade300,
+              color: Colors.red.shade50,
               child: Stack(
                 children: [
                   CardSwiper(
-                    cardsCount: cards.length,
+                    cardsCount: cardDataList.length,
                     cardBuilder: (context, index, percentThresholdX,
                             percentThresholdY) =>
-                        Padding(
-                      padding: const EdgeInsets.fromLTRB(20.0, 70.0, 20, 70),
-                      child: Container(
-                        height: 550,
-                        decoration: BoxDecoration(
-                          color: cards[index].color,
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        alignment: cards[index].alignment,
-                        child: cards[index].child,
-                      ),
-                    ),
+                        buildCard(cardDataList[index]),
                     isLoop: true,
                   ),
                   Align(
@@ -802,9 +231,104 @@ class HomeThreePage extends StatelessWidget {
     );
   }
 
+  Widget buildCard(CardData card) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10.0, 70.0, 10, 70),
+      child: Container(
+        height: 550,
+        decoration: BoxDecoration(
+          color: card.backgroundColor,
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 3),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(254, 230, 190, 138)
+                          .withOpacity(0.7),
+                      spreadRadius: 3,
+                      blurRadius: 7,
+                      offset: const Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Image.asset(card.imagePath, fit: BoxFit.contain),
+                ),
+              ),
+            ),
+            const SizedBox(height: 2),
+            GestureDetector(
+              onTap: () {
+                _launchUrl(card.url);
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Text(
+                  '  ${card.name} ',
+                  style: GoogleFonts.roboto(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w500,
+                    color: card.textColor,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: Text(
+                '  ${card.role}',
+                style: GoogleFonts.roboto(
+                  fontSize: 22,
+                  color: card.textColor,
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text(
+                card.bio,
+                style: GoogleFonts.roboto(
+                  fontSize: 18,
+                  color: card.textColor,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   void _performDelayedTransition(BuildContext context, HomeEvent event) {
-    Future.delayed(Duration(milliseconds: 100), () {
+    Future.delayed(const Duration(milliseconds: 100), () {
       context.read<HomeBloc>().add(event);
     });
+  }
+
+  Future<void> _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchEmail(String email) async {
+    final Uri emailLaunchUri = Uri(scheme: 'mailto', path: email);
+
+    if (!await launchUrl(emailLaunchUri)) {
+      throw 'Could not launch $email';
+    }
   }
 }
